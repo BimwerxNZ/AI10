@@ -14,7 +14,7 @@ export const Brand = {
   Meta: {
     Description: 'Launch the open-source AI workspace for experts. BYO API keys. Compare and tune models, use personas, voice and vision - your data stays local.',
     SiteName: 'Big-AGI | The Expert\'s AI Workspace',
-    ThemeColor: '#32383E',
+    ThemeColor: '#05d9fe',
     TwitterSite: '@enricoros',
   },
   URIs: {

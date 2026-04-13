@@ -1,9 +1,9 @@
 {
-  "name": "big-AGI",
-  "short_name": "big-AGI",
-  "theme_color": "#32383E",
+  "name": "DesignMate",
+  "short_name": "DesignMate",
+  "theme_color": "#05d9fe",
   "background_color": "#9FA6AD",
-  "description": "Open-source AI workspace. Multi-model reasoning and personas for maximum control.",
+  "description": "GenFEA DesignMate (R) AI Design Assistant",
   "categories": [
     "productivity",
     "AI",
