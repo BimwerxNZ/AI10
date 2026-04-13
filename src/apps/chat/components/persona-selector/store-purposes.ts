@@ -18,7 +18,7 @@ export const usePurposeStore = create<PurposeStore>()(
     (set) => ({
 
       // default state
-      hiddenPurposeIDs: ['Developer', 'Designer', 'YouTubeTranscriber'],
+      hiddenPurposeIDs: ['Designer', 'YouTubeTranscriber'],
 
       toggleHiddenPurposeId: (purposeId: string) => {
         set(state => {
@@ -36,13 +36,14 @@ export const usePurposeStore = create<PurposeStore>()(
       name: 'app-purpose',
 
       /* versioning:
-       * 1: hide 'Developer' as 'DeveloperPreview' is best
+       * 1: legacy migration for the old hidden 'Developer' purpose
        * 2: add a hidden 'YouTubeTranscriber' purpose
+       * 3: remove the deprecated 'Developer' hidden purpose
        */
-      version: 2,
+      version: 3,
 
       migrate: (state: any, fromVersion: number): PurposeStore => {
-        // 0 -> 1: rename 'enterToSend' to 'enterIsNewline' (flip the meaning)
+        // 0 -> 1: legacy migration for the removed 'Developer' purpose
         if (state && fromVersion === 0)
           if (!state.hiddenPurposeIDs.includes('Developer'))
             state.hiddenPurposeIDs.push('Developer');
@@ -50,6 +51,8 @@ export const usePurposeStore = create<PurposeStore>()(
         if (state && fromVersion === 1)
           if (!state.hiddenPurposeIDs.includes('YouTubeTranscriber'))
             state.hiddenPurposeIDs.push('YouTubeTranscriber');
+        if (state && fromVersion < 3)
+          state.hiddenPurposeIDs = state.hiddenPurposeIDs.filter((id: string) => id !== 'Developer');
         return state;
       },
     }),
